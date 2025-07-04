@@ -23,9 +23,7 @@
         <activity
             android:name=".results"
             android:exported="false" />
-        <activity
-            android:name=".PlayQuiz"
-            android:exported="false" />
+
         <activity
             android:name=".RegisterAccount"
             android:exported="false" />

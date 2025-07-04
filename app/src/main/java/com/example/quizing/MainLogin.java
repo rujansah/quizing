@@ -3,10 +3,10 @@ package com.example.quizing;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.Firebase;
+
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,7 +39,7 @@ public class MainLogin extends AppCompatActivity {
             return insets;
         });
 
-        // Initializing variables
+        // Initializing firebase variables
         FirebaseApp.initializeApp(this);
         logauth = FirebaseAuth.getInstance();
 

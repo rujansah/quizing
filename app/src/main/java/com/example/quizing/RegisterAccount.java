@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
+
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -18,8 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.Firebase;
-import com.google.firebase.FirebaseApp;
+
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -54,32 +53,32 @@ public class RegisterAccount extends AppCompatActivity {
                 String password = regPassword.getText().toString();
                 String confirmPassword = regConfirmPassword.getText().toString();
 
-                if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty() && password.equals(confirmPassword)){
-                    firebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(RegisterAccount.this, new OnCompleteListener<AuthResult>() {
+                if (!name.isEmpty() && !email.isEmpty() && !password.isEmpty() && !confirmPassword.isEmpty() && password.equals(confirmPassword)) {
+                    firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterAccount.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()){
-                                Toast.makeText(RegisterAccount.this, "Registration success",Toast.LENGTH_SHORT).show();
+                            if (task.isSuccessful()) {
+                                Toast.makeText(RegisterAccount.this, "Registration success", Toast.LENGTH_SHORT).show();
 
-                                SharedPreferences sharedPreferences = getSharedPreferences("forloginactivity",MODE_PRIVATE);
+                                SharedPreferences sharedPreferences = getSharedPreferences("forloginactivity", MODE_PRIVATE);
                                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putBoolean("loggedINN",false);
+                                editor.putBoolean("loggedINN", false);
                                 editor.apply();
 
-                                Intent intentForReturningToLogin = new Intent(RegisterAccount.this,MainLogin.class);
-                                intentForReturningToLogin.putExtra("loginNeeded",true);
+                                Intent intentForReturningToLogin = new Intent(RegisterAccount.this, MainLogin.class);
+                                intentForReturningToLogin.putExtra("loginNeeded", true);
                                 intentForReturningToLogin.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                 startActivity(intentForReturningToLogin);
                                 finish();
 
-                            }else{
-                                Toast.makeText(RegisterAccount.this,"Registration Failed",Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(RegisterAccount.this, "Registration Failed", Toast.LENGTH_SHORT).show();
                             }
 
                         }
                     });
-                }else{
-                    if(name.isEmpty()) {
+                } else {
+                    if (name.isEmpty()) {
                         regName.setError("Fill username");
                     } else if (email.isEmpty()) {
                         regEmail.setError("Fill email");
@@ -87,7 +86,7 @@ public class RegisterAccount extends AppCompatActivity {
                         regPassword.setError("Fill password");
                     } else if (password != confirmPassword) {
                         regConfirmPassword.setError("Didn't match to password");
-                    } else{
+                    } else {
                         regName.setError("Fill name");
                         regEmail.setError("Fill Email");
                         regPassword.setError("Fill password");

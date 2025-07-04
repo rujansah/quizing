@@ -36,7 +36,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
         app:cardElevation="15dp"
         app:cardBackgroundColor="#DCDCF2"
